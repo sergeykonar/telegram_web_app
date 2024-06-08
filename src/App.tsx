@@ -27,28 +27,41 @@ function App() {
 }
 
 
-// Define the type for the response object
-interface ApiResponse {
-    response?: any;
-    error?: any;
+interface ApiRequestData {
+  [key: string]: any;
 }
 
-type ApiRequestCallback = (result: ApiResponse) => void;
+type ApiRequestCallback = (result: Boolean) => void;
 
-function apiRequest(method: string, params: { [key: string]: any }, callback: ApiRequestCallback): void {
-  // Simulate an asynchronous API request
-  setTimeout(() => {
-      // Simulate a successful response
-      const result: ApiResponse = {
-          response: {
-              ok: true,
-              description: "Message sent successfully!"
-          }
-      };
+interface ApiResponse {
+  response?: any;
+  error?: string;
+}
 
-      // Invoke the callback function with the result
-      callback(result);
-  }, 1000); // Simulated delay of 1 second
+
+function apiRequest(
+  method: string,
+  data: ApiRequestData,
+  onOk: () => void,
+  onEroor: () => void
+): void {
+
+
+  const authData = tg.initData || '';
+  fetch('/demo/api', {
+      method: 'POST',
+      body: JSON.stringify(Object.assign(data, {
+          _auth: authData,
+          method: method,
+      })),
+      credentials: 'include',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+      .then(result => onOk()) // Assuming success callback takes result
+      .catch(error => onEroor());
 }
 
 function sendMessage(msg_id?: string, with_webview: boolean = false): void {
@@ -70,35 +83,21 @@ function sendMessage(msg_id?: string, with_webview: boolean = false): void {
           msg_id: msg_id || '',
           with_webview: !tg.initDataUnsafe.receiver && with_webview ? 1 : 0,
       },
-      function (result) {
-          document.querySelectorAll('button').forEach((btn) => {
-              (btn as HTMLButtonElement).disabled = false;
-          });
-
-          if (result.response) {
-              if (result.response.ok) {
-                  btn.textContent = 'Message sent successfully!';
-                  btn.className = 'ok';
-                  btn.style.display = 'block';
-              } else {
-                  btn.textContent = result.response.description;
-                  btn.className = 'err';
-                  btn.style.display = 'block';
-                  alert(result.response.description);
-              }
-          } else if (result.error) {
-              btn.textContent = result.error;
-              btn.className = 'err';
-              btn.style.display = 'block';
-              alert(result.error);
-          } else {
-              btn.textContent = 'Unknown error';
-              btn.className = 'err';
-              btn.style.display = 'block';
-              alert('Unknown error');
-          }
+      function () {
+        document.querySelectorAll('button').forEach((btn) => {
+          (btn as HTMLButtonElement).disabled = false;
+      });
+      alert("Sent!") 
+      },
+      function() {
+        btn.textContent = 'Unknown error';
+        btn.className = 'err';
+        btn.style.display = 'block';
+        alert('Unknown error');
       }
   );
 }
+
+
 
 export default App;
