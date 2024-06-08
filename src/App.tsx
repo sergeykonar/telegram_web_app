@@ -31,14 +31,6 @@ interface ApiRequestData {
   [key: string]: any;
 }
 
-type ApiRequestCallback = (result: Boolean) => void;
-
-interface ApiResponse {
-  response?: any;
-  error?: string;
-}
-
-
 function apiRequest(
   method: string,
   data: ApiRequestData,
