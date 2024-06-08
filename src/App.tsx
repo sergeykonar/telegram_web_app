@@ -8,17 +8,11 @@ const tg = window.Telegram.WebApp;
 function App() {
   useEffect(() => {
     tg.ready()
+    tg.expand()
   }, [])
 
   const onClose = () => {
-    tg.sendData("T")
-    tg.requestContact((success: boolean, response: RequestContactResponse) => {
-      if (success) {
-          console.log('Contact received:', response);
-      } else {
-          console.error('Failed to receive contact');
-      }
-  });
+    tg.sendData("Test")
   }
   return (
     <div className="App">
