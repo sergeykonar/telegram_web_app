@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background: var(--tg-theme-bg-color);
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+}
