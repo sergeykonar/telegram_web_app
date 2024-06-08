@@ -11,6 +11,7 @@ function App() {
   }, [])
 
   const onClose = () => {
+    tg.sendData("T")
     tg.requestContact((success: boolean, response: RequestContactResponse) => {
       if (success) {
           console.log('Contact received:', response);
