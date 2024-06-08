@@ -12,12 +12,22 @@ const handleSend = (text: string) => {
   
 };
 
+function parseQueryString(queryString: string) {
+  const params = new URLSearchParams(queryString);
+  
+  const queryId = params.get('query_id');
+  const user = JSON.parse(decodeURIComponent(params.get('user')!));
+  const authDate = params.get('auth_date');
+  const hash = params.get('hash');
+
+  return { queryId, user, authDate, hash };
+}
 
 function App() {
   useEffect(() => {
     tg.ready()
     tg.expand()
-    console.log(tg.initData)
+    console.log(parseQueryString(tg.initData))
   }, [])
 
   return (
