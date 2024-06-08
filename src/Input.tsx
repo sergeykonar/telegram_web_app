@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
+interface SendMessageProps {
+    onClick: (text: string) => void;
+}
 
-const ChatBot: React.FC = () => {
-    const [message, setMessage] = useState('');
+const SendMessage: React.FC<SendMessageProps> = ({ onClick }) => {
+    const [text, setText] = useState<string>('');
 
-    const handleClick = async () => {
-        const token = '6562462799:AAERQfeKeAd_wjBekNYWJwFyvuiaHqBYM6U';
-        const chatId = 'YOUR_CHAT_ID'; // Replace with your chat ID or the chat ID you want to send messages to
-        const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-        try {
-            const response = await axios.post(url, {
-                chat_id: chatId,
-                text: message,
-            });
-            console.log('Message sent:', response.data);
-        } catch (error) {
-            console.error('Error sending message to Telegram:', error);
-        }
+    const handleClick = () => {
+        onClick(text);
     };
 
     return (
         <div>
-            <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type your message here"
+            <h1>Send Text to Telegram Bot</h1>
+            <input 
+                type="text" 
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter text"
             />
-            <button onClick={handleClick}>Send Message</button>
+            <button onClick={handleClick}>Send</button>
         </div>
     );
 };
+
+export default SendMessage;
