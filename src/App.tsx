@@ -66,8 +66,6 @@ function sendMessage(msg_id?: string, with_webview: boolean = false): void {
       (btn as HTMLButtonElement).disabled = true;
   });
 
-  const btn = document.querySelector('#btn_status') as HTMLButtonElement;
-  btn.textContent = 'Sending...';
 
   apiRequest(
       'sendMessage',
@@ -79,12 +77,9 @@ function sendMessage(msg_id?: string, with_webview: boolean = false): void {
         document.querySelectorAll('button').forEach((btn) => {
           (btn as HTMLButtonElement).disabled = false;
       });
-      alert("Sent!") 
+        alert("Sent!") 
       },
       function() {
-        btn.textContent = 'Unknown error';
-        btn.className = 'err';
-        btn.style.display = 'block';
         alert('Unknown error');
       }
   );
