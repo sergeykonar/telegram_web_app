@@ -33,7 +33,7 @@ function App() {
               },
               body: JSON.stringify(data)
           })
-  }, [text]
+  }, [queryId, text]
   )
 
   useEffect(() => {
