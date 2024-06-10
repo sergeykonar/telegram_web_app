@@ -50,10 +50,6 @@ function App() {
 }
 
 
-interface ApiRequestData {
-  [key: string]: any;
-}
-
 
 
 
