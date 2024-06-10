@@ -18,7 +18,7 @@ function parseQueryString(queryString: string) {
 }
 
 function App() {
-  const [text, setText] = useState('');
+  const [text] = useState('');
   const queryId = tg.initDataUnsafe.query_id
   const onSendData = useCallback(() => {
     const data = {
