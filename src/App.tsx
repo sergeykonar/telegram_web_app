@@ -50,7 +50,7 @@ function App() {
 
   return (
     <div className="App">
-      <TonConnectUIProvider manifestUrl="https://<YOUR_APP_URL>/tonconnect-manifest.json">
+      <TonConnectUIProvider manifestUrl="https://master--tranquil-selkie-6cdd3c.netlify.app/tonconnect-manifest.json">
         <center><TonConnectButton/></center>
           {items.map((item, index) => (
             <Item key={index} title={item.title} price={item.price} image={item.image} />
