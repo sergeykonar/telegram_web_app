@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import { useCallback, useState } from 'react';
 import Item, { ItemProps } from './Item';
 
 const tg = window.Telegram.WebApp;
@@ -18,8 +17,6 @@ function parseQueryString(queryString: string) {
 }
 
 function App() {
-  const [text] = useState('');
-  const queryId = tg.initDataUnsafe.query_id
 
   const getItems = (): ItemProps[] => {
     return [
