@@ -20,21 +20,6 @@ function parseQueryString(queryString: string) {
 function App() {
   const [text] = useState('');
   const queryId = tg.initDataUnsafe.query_id
-  const onSendData = useCallback(() => {
-    const data = {
-        queryId,
-        text
-    }
-
-    fetch('https://83.8.130.218:7777/send', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(data)
-          })
-  }, [queryId, text]
-  )
 
   const getItems = (): ItemProps[] => {
     return [
@@ -71,7 +56,6 @@ function App() {
         <Item key={index} title={item.title} price={item.price} image={item.image} />
       ))}
       <Item title='Test' price={90} image='https://i.imgur.com/RriuMjK.png'/>
-      {/* <SendMessage onClick={onSendData}/> */}
     </div>
   );
 }
