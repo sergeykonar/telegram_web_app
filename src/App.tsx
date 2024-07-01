@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import SendMessage from './Input';
 import { useCallback, useState } from 'react';
 import Item, { ItemProps } from './Item';
 
@@ -65,7 +64,7 @@ function App() {
   }, [])
 
   const items: ItemProps[] = getItems();
-  
+
   return (
     <div className="App">
       {items.map((item, index) => (
