@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-interface SendMessageProps {
-    onClick: (text: string) => void;
-}
+// interface SendMessageProps {
+//     onClick: (text: string) => void;
+// }
 
-const SendMessage: React.FC<SendMessageProps> = ({ onClick }) => {
-    const [text, setText] = useState<string>('');
+// const SendMessage: React.FC<SendMessageProps> = ({ onClick }) => {
+//     const [text, setText] = useState<string>('');
 
-    const handleClick = () => {
-        onClick(text);
-    };
-    return (
-        <div>
-            <h1>Send Text to Telegram Bot</h1>
-            <input 
-                type="text" 
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Enter text"
-            />
-            <button onClick={handleClick}>Send</button>
-        </div>
-    );
-};
+//     const handleClick = () => {
+//         onClick(text);
+//     };
+//     return (
+//         <div>
+//             <h1>Send Text to Telegram Bot</h1>
+//             <input 
+//                 type="text" 
+//                 value={text}
+//                 onChange={(e) => setText(e.target.value)}
+//                 placeholder="Enter text"
+//             />
+//             <button onClick={handleClick}>Send</button>
+//         </div>
+//     );
+// };
 
-export default SendMessage;
+// export default SendMessage;
