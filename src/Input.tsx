@@ -10,7 +10,6 @@ const SendMessage: React.FC<SendMessageProps> = ({ onClick }) => {
     const handleClick = () => {
         onClick(text);
     };
-
     return (
         <div>
             <h1>Send Text to Telegram Bot</h1>

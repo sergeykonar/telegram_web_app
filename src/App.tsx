@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import SendMessage from './Input';
 import { useCallback, useState } from 'react';
+import Item, { ItemProps } from './Item';
 
 const tg = window.Telegram.WebApp;
 
@@ -26,7 +27,7 @@ function App() {
         text
     }
 
-    fetch('http://83.8.130.218:7777/send', {
+    fetch('https://83.8.130.218:7777/send', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -36,21 +37,44 @@ function App() {
   }, [queryId, text]
   )
 
+  const getItems = (): ItemProps[] => {
+    return [
+      {
+        title: 'Sample Item 1',
+        price: 29.99,
+        image: 'https://i.imgur.com/RriuMjK.png'
+      },
+      {
+        title: 'Sample Item 2',
+        price: 49.99,
+        image: 'https://i.imgur.com/RriuMjK.png'
+      },
+      {
+        title: 'Sample Item 3',
+        price: 19.99,
+        image: 'https://i.imgur.com/RriuMjK.png'
+      }
+    ];
+  };
+
+  
   useEffect(() => {
     tg.ready()
     tg.expand()
     console.log(parseQueryString(tg.initData))
   }, [])
 
+  const items: ItemProps[] = getItems();
+  
   return (
     <div className="App">
-      <SendMessage onClick={onSendData}/>
+      {items.map((item, index) => (
+        <Item key={index} title={item.title} price={item.price} image={item.image} />
+      ))}
+      <Item title='Test' price={90} image='https://i.imgur.com/RriuMjK.png'/>
+      {/* <SendMessage onClick={onSendData}/> */}
     </div>
   );
 }
-
-
-
-
 
 export default App;

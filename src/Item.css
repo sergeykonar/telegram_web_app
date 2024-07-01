@@ -1,0 +1,24 @@
+.item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+    max-width: 300px;
+    margin: 16px auto;
+  }
+  
+  .item-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .item-title {
+    font-size: 1.5em;
+    margin: 8px 0;
+  }
+  
+  .item-price {
+    color: #888;
+    font-size: 1.2em;
+  }
