@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Item, { ItemProps } from './Item';
+import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
 
 const tg = window.Telegram.WebApp;
 
@@ -49,10 +50,16 @@ function App() {
 
   return (
     <div className="App">
-      {items.map((item, index) => (
-        <Item key={index} title={item.title} price={item.price} image={item.image} />
-      ))}
-      <Item title='Test' price={90} image='https://i.imgur.com/RriuMjK.png'/>
+      <TonConnectUIProvider manifestUrl="https://<YOUR_APP_URL>/tonconnect-manifest.json">
+        <center><TonConnectButton/></center>
+          {items.map((item, index) => (
+            <Item key={index} title={item.title} price={item.price} image={item.image} />
+          ))}
+          <Item title='Test' price={90} image='https://i.imgur.com/RriuMjK.png'/>
+          
+      </TonConnectUIProvider>
+      
+
     </div>
   );
 }
