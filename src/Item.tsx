@@ -2,11 +2,12 @@
 import React from 'react';
 import './Item.css'; // Assuming you want to add some custom styles
 import { useTonConnectUI } from '@tonconnect/ui-react';
+import { Address } from "@ton/core";
 
 const transaction = {
     messages: [
         {
-            address: "0:412410771DA82CBA306A55FA9E0D43C9D245E38133CB58F1457DFB8D5CD8892F", 
+            address: "0:d8aa56f70aee4b65eba778619730cd8e97d79b060750c4870ba3cfdbe9d91e73", 
             amount: "20000000",
         }
     ], validUntil: Date.now() + 1000 * 60 * 5

@@ -3,6 +3,8 @@ import './App.css';
 import Item, { ItemProps } from './Item';
 import { TonConnectButton, TonConnectUIProvider } from '@tonconnect/ui-react';
 
+import { Buffer } from 'buffer'; if (!window.Buffer) {   window.Buffer = Buffer; } 
+
 const tg = window.Telegram.WebApp;
 
 function parseQueryString(queryString: string) {
