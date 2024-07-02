@@ -6,7 +6,7 @@ import { useTonConnectUI } from '@tonconnect/ui-react';
 const transaction = {
     messages: [
         {
-            address: "0:d8aa56f70aee4b65eba778619730cd8e97d79b060750c4870ba3cfdbe9d91e73", 
+            address: "UQDYqlb3Cu5LZeuneGGXMM2Ol9ebBgdQxIcLo8_b6dkec-LX", 
             amount: "2000000000",
         }
     ], validUntil: Date.now() + 1000 * 60 * 5
