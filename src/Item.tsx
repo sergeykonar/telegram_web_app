@@ -20,7 +20,7 @@ export interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ title, price, image }) => {
-  const [tonConnectUI, setOptions] = useTonConnectUI();
+  const [tonConnectUI] = useTonConnectUI();
   return (
     <div className="item">
       <img src={image} alt={title} className="item-image" />
