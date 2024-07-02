@@ -7,7 +7,7 @@ const transaction = {
     messages: [
         {
             address: "0:d8aa56f70aee4b65eba778619730cd8e97d79b060750c4870ba3cfdbe9d91e73", 
-            amount: "20000000",
+            amount: "2000000000",
         }
     ], validUntil: Date.now() + 1000 * 60 * 5
 
